@@ -14,7 +14,7 @@ Say what you want to do. Waymark finds where to go, and shows why.
 </div>
 
 > [!NOTE]
-> **Early days.** Nothing below runs yet. The first step is the eval set and its scoring script, built before any
+> **Early days.** Nothing below runs yet. The first step is the eval set (a fixed set of test questions) and its scoring script, built before any
 > app code, so every later change is measured against a fixed bar. This page describes the design.
 
 ## The idea
@@ -33,12 +33,20 @@ Waymark will answer with:
 A sketch of the planned output (placeholders, not real results):
 
 ```text
-castles + bike paths · quiet · ≤ 2 h from Kraków · no car · 2 days
+castles + bike paths · quiet · ≤ 2 h
+from Kraków · no car · 2 days
 
-1. Town A   castle [1] · bike route 38 km, 80% asphalt (OSM) · station 0.6 km    ✓ distance  ✓ no car
-2. Town B   castle [2] · no bike route found in OSM                               ✓ distance  ✓ no car
+1. Town A
+   castle [1] · station 0.6 km
+   bike route 38 km, 80% asphalt (OSM)
+   ✓ distance  ✓ no car
 
-   A plain chatbot also suggested Town C:                                         ✗ too far from Kraków
+2. Town B
+   castle [2] · no bike route in OSM
+   ✓ distance  ✓ no car
+
+A plain chatbot also suggested Town C:
+   ✗ too far from Kraków
 ```
 
 ## A plain chatbot guesses. Waymark checks.
@@ -56,7 +64,7 @@ it says, a station that isn't there, a town far outside your limit. Waymark does
 ## How it will work
 
 ```mermaid
-flowchart LR
+flowchart TD
     Q["Your request"] --> P["Parse activities<br/>and limits"]
     P --> F["Filter towns by code<br/>(distance, region, station)"]
     F --> T["Search travel guides<br/>(keywords + meaning)"]
