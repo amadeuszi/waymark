@@ -1,11 +1,13 @@
-# Travel Buddy
+# Waymark
 
 Tell it what you want to do, and it finds where to go.
+
+*A waymark is the painted sign that marks a trail. Here every claim is marked with its source, and every route is checked.*
 
 *"Castles and bike paths, quiet, within 2 hours of Kraków, no car, 2 days"* → a short list of towns that fit, and
 day plans where every line links to the guide sentence it came from.
 
-A plain chatbot guesses. Travel Buddy checks:
+A plain chatbot guesses. Waymark checks:
 - **Grounded:** every claim cites its source ([Wikivoyage](https://www.wikivoyage.org/) travel guides).
 - **Constraints checked by code:** distances, route lengths and surfaces are computed, not guessed
   (bike routes from [OpenStreetMap](https://www.openstreetmap.org/)).
